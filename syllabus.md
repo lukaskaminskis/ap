@@ -1,22 +1,18 @@
-# Syllabus
+# Kurso informacija
 
-###### [Download the full syllabus as a PDF with mappings to the AP CSP Framework's Learning Objectives](https://dl.dropboxusercontent.com/s/f2srub4nxf2dx6c/Syllabus%202018-19.pdf?dl=0)
 
-## Description
+## Laiko juosta
+Šis kursas yra dėstomas Turing School partnerėse mokyklose Vilniaus Vytauto Didžiojo Gimnazijoje ir Vilniaus Privačioje Gimnazijoje. CS50 AP kurso trukmė yra du metai turint 2-4 val. kontaktinių valandų ir panašiai laiko praleidžiant dirbant namuose. <b> Taigi, kursas reikalauja per savaitę minimum 4 val. darbo! </b>
+### 2018 - 2019 mokslo metai
+<image src="../assets/images/timeline18.png"></image>
 
-CS50 is Harvard University’s introduction to the intellectual enterprises of computer science and the art of programming for students with a diversity of technological background and experience. CS50 for AP Computer Science Principles is an adaptation of CS50 specifically tailored to align with the AP Computer Science Principles curriculum framework. The course’s assignments, materials, and resources are all identical to the version of the course taught at the college-level, albeit adapted to suit a secondary school audience.
+## Reikalavimai
 
-Among this course’s objectives is to supply students with a comprehensive introduction to the fundamentals of the discipline of computer science. We will do so using programming in several different languages as a vehicle to introduce these fundamentals, including such topics as algorithms, abstraction, data, global impact, and internet technologies. Though the course is programming-heavy, it should be stressed that this is not a “programming course”; rather, this course should be considered one of problem-solving, creativity, and exploration. By year’s end, students will have a richer understanding of the key principles of the discipline of computer science. Students will be able to speak intelligently about how computers work and how they enable us to become better problem-solvers, and will hopefully be able to communicate that knowledge to others.
+Vienintelis reikalavimas pradedant CS50 AP kursą yra mokėti elementariąją algebrą.
 
-Whether students elect to take no other computer science courses in their lifetime or consider this class the first step in a longer course of study, it is our sincere hope that they feel more comfortable with—and indeed sometimes skeptical of—the technologies that surround us each day.
+## Kurso kalba
 
-## Expectations
-
-Students are expected to submit all problems! If students would like to receive AP credit they will need to take the [AP CSP Exam](https://apcentral.collegeboard.org/courses/ap-computer-science-principles/exam) and complete the [Create and Explore Tasks](https://apcentral.collegeboard.org/pdf/ap-csp-student-task-directions.pdf).
-
-## Prerequisites
-
-The only background required for CS50 for AP Computer Science Principles is completion of Algebra I or its equivalent.
+Pagrindinė kurso kalba yra <b>anglų kalba</b>, nors puslapyje informacija klasifikuojama lietuvių kalba. Tai darome, kad būtų lengviau pradžiai orientuotis.
 
 ## Books
 

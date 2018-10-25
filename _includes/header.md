@@ -1,4 +1,4 @@
-# [CS50 AP]({{ "/" | relative_url }})
+<image class="tslogo" src="../assets/images/logo.png"></image><br>
 
-Harvard University\\
-2018–2019
+# [CS50 AP]({{ "/" | relative_url }})
+2018 - 2019
