@@ -4,10 +4,14 @@
 ## Laiko juosta
 Šis kursas yra dėstomas Turing School partnerėse mokyklose Vilniaus Vytauto Didžiojo Gimnazijoje ir Vilniaus Privačioje Gimnazijoje. CS50 AP kurso trukmė yra du metai turint 2-4 val. kontaktinių valandų ir panašiai laiko praleidžiant dirbant namuose. <b> Taigi, kursas reikalauja per savaitę minimum 4 val. darbo! </b>
 ### 2018 - 2019 mokslo metai
-<image src="../assets/images/timeline18.svg"></image>
+<image src="/../assets/images/timeline18.svg"></image>
 ### 2019 - 2020 mokslo metai
-<image src="../assets/images/timeline19.svg"></image>
+<image src="/../assets/images/timeline19.svg"></image>
 ## Reikalavimai
+
+Vienintelis reikalavimas pradedant CS50 AP kursą yra mokėti elementariąją algebrą.
+
+## Vertinimas
 
 Vienintelis reikalavimas pradedant CS50 AP kursą yra mokėti elementariąją algebrą.
 
