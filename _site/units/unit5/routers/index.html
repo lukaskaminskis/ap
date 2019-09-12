@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta property="og:description" content="">
+
+        <meta property="og:image" content="">
+
+        <meta property="og:title" content="Routers - CS50 AP">
+
+        <meta property="og:url" content="http://localhost:4000">
+
+        <link href="/favicon.ico?1568320278" rel="icon">
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+
+        <link href="/assets/css/style.css?1568320278" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+        <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+
+            $(document).on('DOMContentLoaded', function() {
+
+                // Get headings
+                let $headings = $([
+                    'main.markdown-body h2',
+                    'main.markdown-body h3',
+                    'main.markdown-body h4',
+                    'main.markdown-body h5',
+                    'main.markdown-body h6'].join(','));
+
+                // Add anchors to headings
+                $headings.each(function(index, element) {
+                    if ($(element).attr('id') && $(element).has('a').length === 0) {
+                        $(element).wrapInner($('<a data-id href="#' + $(element).attr('id') + '"></a>'));
+                    }
+                });
+
+                // For each iframe
+                $('iframe').each(function(index, element) {
+
+                    // Ensure responsive in Safari on iOS (for, e.g., Google Calendars), per https://stackoverflow.com/a/23083463/5156190
+                    if (!$(this).attr('scrolling')) {
+                        $(this).attr('scrolling', 'no');
+                    }
+
+                    // If an embedded YouTube video
+                    let matches = $(this).attr('src').match(/^https:\/\/www.youtube.com\/embed\/([A-Za-z0-9_-]+)/);
+                    if (matches) {
+
+                        // Add allowfullscreen if not present
+                        if ($(this).attr('allowfullscreen') === undefined) {
+                            $(this).attr('allowfullscreen', '');
+                        }
+
+                        // Add modifier classes if not present, assuming 16x9 by default
+                        if (!$(this).hasClass('embed-responsive-item')) {
+                            $(this).addClass('embed-responsive-item');
+                            $(this).wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+                        }
+
+                        // Add background image for printing
+                        // https://stackoverflow.com/a/2068371/5156190
+                        if ($(this).css('background-image') === 'none') {
+                            $(this).css('background-image', 'url("https://img.youtube.com/vi/' + matches[1] + '/sddefault.jpg")');
+                            $(this).css('background-repeat', 'no-repeat');
+                            $(this).css('background-size', 'cover');
+                        }
+                    }
+                });
+
+                // Ensure last heading can be anchored atop page
+                $(window).resize(function() {
+                    let last = $headings.last();
+                    if (last.length) {
+
+                        // On small devices
+                        if ($('aside').position().top < $('main').position().top) {
+                            var margin = $(window).height() - ($('main').outerHeight() + $('aside').outerHeight() - last.offset().top);
+                        }
+
+                        // On large devices
+                        else {
+                            var margin = $(window).height() - ($('main').outerHeight() - last.offset().top);
+                        }
+
+                        // Update margin
+                        $('main').css('margin-bottom', Math.max(0, Math.ceil(margin)) + 'px');
+                    }
+                });
+                $(window).trigger('resize');
+
+            });
+
+        </script>
+
+        <title>Routers - CS50 AP</title>
+
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-md">
+ 
+                    <header><image class="tslogo" src="/../assets/images/logo.png"></image>
+<p><br /></p>
+
+<h1 data-id="cs50-ap"><a href="/">CS50 AP</a></h1>
+<p>2018 - 2019</p></header>
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-md-none" data-target="aside > nav" data-toggle="collapse">Menu</button>
+
+                    <nav class="collapse d-md-block"><hr />
+
+<ul>
+  <li><a href="https://goo.gl/forms/2uAsVP4EIn5LstTl2">IDE</a></li>
+  <li><a href="https://reference.cs50.net/">Bibliotekos</a></li>
+  <li><a href="https://cs50.me/courses/94e04d44-9d0d-4d7e-8132-61dfb234fec8/join">Dienynas</a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="https://cs50.statuspage.io/">CS50 webs</a></li>
+  <li><a href="https://cs50.readthedocs.io/style/c/">Programavimo Style Guide</a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="/units"><strong>Programa</strong></a></li>
+  <li><a href="/syllabus">Kurso informacija</a></li>
+  <li><a href="/tools">Įrankiai</a></li>
+</ul></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-md markdown-body">
+
+                    <h2 id="routers">Routers</h2>
+
+<p>Routers are the components of the Internet that direct packages of data across various networks. They follow a set of rules to direct packets based upon IP address and port. There are many potential routes data can take to get from one place to another, and frequently routers will direct individual packets on different routes to end up at the same location.</p>
+
+<ul>
+  <li>
+    <h3 id="lecture">Lecture</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/n_KghQP86Sw?start=1629&amp;end=2491">Watch on Youtube</a></li>
+      <li><a href="https://video.cs50.net/cscie1a/2017/fall/lectures/internet?t=27m09s">Watch on the CS50 Video Player</a></li>
+      <li><a href="https://cdn.cs50.net/cscie1a/2017/fall/lectures/internet/internet-720p.mp4?download">Download Lecture</a></li>
+      <li><a href="https://cdn.cs50.net/cscie1a/2017/fall/lectures/internet/notes/internet.html">Lecture Notes</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="notes">Notes</h3>
+    <ul>
+      <li><a href="/assets/pdfs/unit5/routers.pdf">Routers</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="supplementary-resources">Supplementary Resources</h3>
+    <ul>
+      <li>Khan Academy on <a href="https://www.youtube.com/embed/aD_yi5VjF78">Packet, Routers, and Reliability</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="thought-questions">Thought Questions</h3>
+    <ul>
+      <li>What parameters do routers use to sort data packets?</li>
+      <li>Why do you think data will seemingly travel farther away than is necessary only to return back to a desired location (i.e. going from Seattle to Los Angeles and then back up to Palo Alto)?</li>
+      <li>Routers allow us to indirectly connect and communicate with other devices on the Internet. Why don’t we connect all of them directly to each other?</li>
+    </ul>
+  </li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

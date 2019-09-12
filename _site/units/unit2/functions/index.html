@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta property="og:description" content="">
+
+        <meta property="og:image" content="">
+
+        <meta property="og:title" content="Functions - CS50 AP">
+
+        <meta property="og:url" content="http://localhost:4000">
+
+        <link href="/favicon.ico?1568320278" rel="icon">
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+
+        <link href="/assets/css/style.css?1568320278" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+        <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+
+            $(document).on('DOMContentLoaded', function() {
+
+                // Get headings
+                let $headings = $([
+                    'main.markdown-body h2',
+                    'main.markdown-body h3',
+                    'main.markdown-body h4',
+                    'main.markdown-body h5',
+                    'main.markdown-body h6'].join(','));
+
+                // Add anchors to headings
+                $headings.each(function(index, element) {
+                    if ($(element).attr('id') && $(element).has('a').length === 0) {
+                        $(element).wrapInner($('<a data-id href="#' + $(element).attr('id') + '"></a>'));
+                    }
+                });
+
+                // For each iframe
+                $('iframe').each(function(index, element) {
+
+                    // Ensure responsive in Safari on iOS (for, e.g., Google Calendars), per https://stackoverflow.com/a/23083463/5156190
+                    if (!$(this).attr('scrolling')) {
+                        $(this).attr('scrolling', 'no');
+                    }
+
+                    // If an embedded YouTube video
+                    let matches = $(this).attr('src').match(/^https:\/\/www.youtube.com\/embed\/([A-Za-z0-9_-]+)/);
+                    if (matches) {
+
+                        // Add allowfullscreen if not present
+                        if ($(this).attr('allowfullscreen') === undefined) {
+                            $(this).attr('allowfullscreen', '');
+                        }
+
+                        // Add modifier classes if not present, assuming 16x9 by default
+                        if (!$(this).hasClass('embed-responsive-item')) {
+                            $(this).addClass('embed-responsive-item');
+                            $(this).wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+                        }
+
+                        // Add background image for printing
+                        // https://stackoverflow.com/a/2068371/5156190
+                        if ($(this).css('background-image') === 'none') {
+                            $(this).css('background-image', 'url("https://img.youtube.com/vi/' + matches[1] + '/sddefault.jpg")');
+                            $(this).css('background-repeat', 'no-repeat');
+                            $(this).css('background-size', 'cover');
+                        }
+                    }
+                });
+
+                // Ensure last heading can be anchored atop page
+                $(window).resize(function() {
+                    let last = $headings.last();
+                    if (last.length) {
+
+                        // On small devices
+                        if ($('aside').position().top < $('main').position().top) {
+                            var margin = $(window).height() - ($('main').outerHeight() + $('aside').outerHeight() - last.offset().top);
+                        }
+
+                        // On large devices
+                        else {
+                            var margin = $(window).height() - ($('main').outerHeight() - last.offset().top);
+                        }
+
+                        // Update margin
+                        $('main').css('margin-bottom', Math.max(0, Math.ceil(margin)) + 'px');
+                    }
+                });
+                $(window).trigger('resize');
+
+            });
+
+        </script>
+
+        <title>Functions - CS50 AP</title>
+
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-md">
+ 
+                    <header><image class="tslogo" src="/../assets/images/logo.png"></image>
+<p><br /></p>
+
+<h1 data-id="cs50-ap"><a href="/">CS50 AP</a></h1>
+<p>2018 - 2019</p></header>
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-md-none" data-target="aside > nav" data-toggle="collapse">Menu</button>
+
+                    <nav class="collapse d-md-block"><hr />
+
+<ul>
+  <li><a href="https://goo.gl/forms/2uAsVP4EIn5LstTl2">IDE</a></li>
+  <li><a href="https://reference.cs50.net/">Bibliotekos</a></li>
+  <li><a href="https://cs50.me/courses/94e04d44-9d0d-4d7e-8132-61dfb234fec8/join">Dienynas</a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="https://cs50.statuspage.io/">CS50 webs</a></li>
+  <li><a href="https://cs50.readthedocs.io/style/c/">Programavimo Style Guide</a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="/units"><strong>Programa</strong></a></li>
+  <li><a href="/syllabus">Kurso informacija</a></li>
+  <li><a href="/tools">Įrankiai</a></li>
+</ul></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-md markdown-body">
+
+                    <h2 id="functions">Functions</h2>
+
+<p>Functions are an amazing tool that we can use to organize, simplify, and reuse the code that we write. We organize our code by pulling everything out of <code class="highlighter-rouge">main</code>, grouping code into more logical chunks. We simplify our code because smaller pieces of code are easier to write and, perhaps increasingly importantly, easier to debug. Wouldn’t you much rather debug something that’s breaking that consists only of 10 lines of code, rather than 100 or 1000? We can reuse our code by writing a function once and then directing our other programs to use the function that we wrote a single time. In fact, every time you use the CS50 Library that’s what you do. We wrote those functions once, in 2009, and now they can be reused. We don’t have to copy the lines of code that comprise things like <code class="highlighter-rouge">get_int();</code> we can just rely on the fact that they once were written and now exist in a file. In this section, we discuss using functions – declaring, defining, and calling them – and how to make use of passing information back and forth between functions by way of <code class="highlighter-rouge">return</code> statements.</p>
+
+<ul>
+  <li>
+    <h3 id="lecture">Lecture</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/EApk15pCIEA?start=1922&amp;end=4591">Watch on Youtube</a></li>
+      <li><a href="https://video.cs50.net/2017/fall/lectures/1?t=32m02s">Watch on the CS50 Video Player</a></li>
+      <li><a href="http://cdn.cs50.net/2017/fall/lectures/1/lecture1-720p.mp4?download">Download Lecture</a></li>
+      <li><a href="https://docs.cs50.net/2017/fall/notes/1/lecture1.html#functions">Lecture Notes</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="short">Short</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/n1glFqt3g38">Functions</a></li>
+      <li><a href="https://www.youtube.com/embed/GiFbdVGjF9I">Variables and Scope</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="notes">Notes</h3>
+    <ul>
+      <li><a href="/assets/pdfs/unit2/functions.pdf">Functions</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="thought-questions">Thought Questions</h3>
+    <ul>
+      <li>Are functions necessary? Are functions optimal?</li>
+      <li>What are some of the conveniences provided by functions? What are some of the inconveniences?</li>
+      <li>What are some of the conveniences of passing copies of variables as arguments to functions? Would it be better to pass the actual variable, or worse?</li>
+      <li>What are some problems with local and global variable scope, an implication of functions?</li>
+      <li>If functions were not something we were able to work with in our programs, how might that change your coding strategy? More importantly, how might it impact your debugging strategy?</li>
+    </ul>
+  </li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

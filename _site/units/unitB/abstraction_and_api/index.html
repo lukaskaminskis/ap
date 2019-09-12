@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta property="og:description" content="">
+
+        <meta property="og:image" content="">
+
+        <meta property="og:title" content="Abstraction and API - CS50 AP">
+
+        <meta property="og:url" content="http://localhost:4000">
+
+        <link href="/favicon.ico?1568320278" rel="icon">
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+
+        <link href="/assets/css/style.css?1568320278" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+        <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+
+            $(document).on('DOMContentLoaded', function() {
+
+                // Get headings
+                let $headings = $([
+                    'main.markdown-body h2',
+                    'main.markdown-body h3',
+                    'main.markdown-body h4',
+                    'main.markdown-body h5',
+                    'main.markdown-body h6'].join(','));
+
+                // Add anchors to headings
+                $headings.each(function(index, element) {
+                    if ($(element).attr('id') && $(element).has('a').length === 0) {
+                        $(element).wrapInner($('<a data-id href="#' + $(element).attr('id') + '"></a>'));
+                    }
+                });
+
+                // For each iframe
+                $('iframe').each(function(index, element) {
+
+                    // Ensure responsive in Safari on iOS (for, e.g., Google Calendars), per https://stackoverflow.com/a/23083463/5156190
+                    if (!$(this).attr('scrolling')) {
+                        $(this).attr('scrolling', 'no');
+                    }
+
+                    // If an embedded YouTube video
+                    let matches = $(this).attr('src').match(/^https:\/\/www.youtube.com\/embed\/([A-Za-z0-9_-]+)/);
+                    if (matches) {
+
+                        // Add allowfullscreen if not present
+                        if ($(this).attr('allowfullscreen') === undefined) {
+                            $(this).attr('allowfullscreen', '');
+                        }
+
+                        // Add modifier classes if not present, assuming 16x9 by default
+                        if (!$(this).hasClass('embed-responsive-item')) {
+                            $(this).addClass('embed-responsive-item');
+                            $(this).wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+                        }
+
+                        // Add background image for printing
+                        // https://stackoverflow.com/a/2068371/5156190
+                        if ($(this).css('background-image') === 'none') {
+                            $(this).css('background-image', 'url("https://img.youtube.com/vi/' + matches[1] + '/sddefault.jpg")');
+                            $(this).css('background-repeat', 'no-repeat');
+                            $(this).css('background-size', 'cover');
+                        }
+                    }
+                });
+
+                // Ensure last heading can be anchored atop page
+                $(window).resize(function() {
+                    let last = $headings.last();
+                    if (last.length) {
+
+                        // On small devices
+                        if ($('aside').position().top < $('main').position().top) {
+                            var margin = $(window).height() - ($('main').outerHeight() + $('aside').outerHeight() - last.offset().top);
+                        }
+
+                        // On large devices
+                        else {
+                            var margin = $(window).height() - ($('main').outerHeight() - last.offset().top);
+                        }
+
+                        // Update margin
+                        $('main').css('margin-bottom', Math.max(0, Math.ceil(margin)) + 'px');
+                    }
+                });
+                $(window).trigger('resize');
+
+            });
+
+        </script>
+
+        <title>Abstraction and API - CS50 AP</title>
+
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-md">
+ 
+                    <header><image class="tslogo" src="/../assets/images/logo.png"></image>
+<p><br /></p>
+
+<h1 data-id="cs50-ap"><a href="/">CS50 AP</a></h1>
+<p>2018 - 2019</p></header>
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-md-none" data-target="aside > nav" data-toggle="collapse">Menu</button>
+
+                    <nav class="collapse d-md-block"><hr />
+
+<ul>
+  <li><a href="https://goo.gl/forms/2uAsVP4EIn5LstTl2">IDE</a></li>
+  <li><a href="https://reference.cs50.net/">Bibliotekos</a></li>
+  <li><a href="https://cs50.me/courses/94e04d44-9d0d-4d7e-8132-61dfb234fec8/join">Dienynas</a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="https://cs50.statuspage.io/">CS50 webs</a></li>
+  <li><a href="https://cs50.readthedocs.io/style/c/">Programavimo Style Guide</a></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="/units"><strong>Programa</strong></a></li>
+  <li><a href="/syllabus">Kurso informacija</a></li>
+  <li><a href="/tools">Įrankiai</a></li>
+</ul></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-md markdown-body">
+
+                    <h2 id="abstraction-and-api">Abstraction and API</h2>
+
+<p>Abstraction is a manner in which a person interacts with a program or system without directly working with more complex details “under the hood” or in a “black box”, so to speak. Complex details that may not be of interest are abstracted away so that the programmer works with only what is necessary to him. Abstraction is a key part of computer science and even in life in general. Earlier in the curriculum, students have seen that, although perhaps not of the highest level, C is a high level language, with machine/assembly code a level below, and binary code even further below. Such lower level languages are abstracted away so that the user can program in C without necessarily needing to know what goes on under the hood in machine code and binary. Similarly, APIs (Application Program Interfaces) are a level of abstraction used so that others may use function calls without needing to know what exactly happens when the function is called.</p>
+
+<p>In this section, we’ll go over the idea of abstraction in the context of the CS50 library function <code class="highlighter-rouge">get_string();</code>, our own functions, strings in C, and the Google Maps API. By building upon preexisting creations in the computer science community, we can avoid “reinventing the wheel” and instead focus on innovating above and beyond what we have today.</p>
+
+<ul>
+  <li>
+    <h3 id="lecture-part-0">Lecture (Part 0)</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/EApk15pCIEA?start=1922&amp;end=2279">Watch on Youtube</a></li>
+      <li><a href="https://video.cs50.net/2017/fall/lectures/1?t=0h32m2s">Watch on the CS50 Video Player</a></li>
+      <li><a href="http://cdn.cs50.net/2017/fall/lectures/1/lecture1-720p.mp4?download">Download Lecture</a></li>
+      <li><a href="https://docs.cs50.net/2017/fall/notes/1/lecture1.html#functions">Lecture Notes</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="lecture-part-1">Lecture (Part 1)</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/EApk15pCIEA?start=4154&amp;end=4591">Watch on Youtube</a></li>
+      <li><a href="https://video.cs50.net/2017/fall/lectures/1?t=1h9m14s">Watch on the CS50 Video Player</a></li>
+      <li><a href="http://cdn.cs50.net/2017/fall/lectures/1/lecture1-720p.mp4?download">Download Lecture</a></li>
+      <li><a href="https://docs.cs50.net/2017/fall/notes/1/lecture1.html#functions">Lecture Notes</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="lecture-part-2">Lecture (Part 2)</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/IJNPHorTqQs?start=3598&amp;end=4787">Watch on Youtube</a></li>
+      <li><a href="https://video.cs50.net/2017/fall/lectures/2?t=0h59m58s">Watch on the CS50 Video Player</a></li>
+      <li><a href="http://cdn.cs50.net/2017/fall/lectures/2/lecture2-720p.mp4?download">Download Lecture</a></li>
+      <li><a href="https://docs.cs50.net/2017/fall/notes/2/lecture2.html#strings-arrays">Lecture Notes</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="lecture-part-3">Lecture (Part 3)</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/4qQW1uSoxRg?start=5560&amp;end=6049">Watch on Youtube</a></li>
+      <li><a href="https://video.cs50.net/2017/fall/lectures/11?t=1h32m40s">Watch on the CS50 Video Player</a></li>
+      <li><a href="http://cdn.cs50.net/2017/fall/lectures/11/lecture11-720p.mp4?download">Download Lecture</a></li>
+      <li><a href="https://docs.cs50.net/2017/fall/notes/11/lecture11.html#ajax">Lecture Notes</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="lecture-part-4">Lecture (Part 4)</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/embed/6V1sr0XV_Ng">Watch on Youtube</a></li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="supplementary-resources">Supplementary Resources</h3>
+    <ul>
+      <li>Abstraction:
+        <ul>
+          <li>Java Papers on <a href="https://javapapers.com/core-java/java-abstraction/">Java Abstraction</a></li>
+          <li>Stack Overflow on <a href="https://stackoverflow.com/questions/7028242/what-is-abstraction">Abstraction</a></li>
+        </ul>
+      </li>
+      <li>APIs:
+        <ul>
+          <li>Brian Proffitt on <a href="https://readwrite.com/2013/09/19/api-defined/">What APIs Are and Why They’re Important</a></li>
+          <li>Jenn Chen on <a href="https://sproutsocial.com/insights/what-is-an-api/">What is an API and Why Does It Matter?</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="thought-questions">Thought Questions</h3>
+    <ul>
+      <li>Why do we use abstractions and why are they necessary?</li>
+      <li>What are some real world level of abstractions?</li>
+      <li>What is the highest level of abstraction that we can think of?
+        <ul>
+          <li>(One example might be a website that creates a website for you - no programming is involved for the user.)</li>
+        </ul>
+      </li>
+      <li>Can you think of a downfall of using abstractions?</li>
+      <li>When would it be better to use a “lower” level language, such as C, rather than a “higher” level language, such as Python?</li>
+    </ul>
+  </li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
