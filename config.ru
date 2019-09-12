@@ -5,4 +5,5 @@
 
 require "github-pages"
 require "jekyll-auth"
+require "jekyll-remote-theme"
 run JekyllAuth.site
