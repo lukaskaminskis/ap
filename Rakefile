@@ -6,6 +6,6 @@
 
 namespace :assets do
   task :precompile do
-    exec("jekyll-auth build")
+    exec("jekyll-auth build --verbose")
   end
 end
