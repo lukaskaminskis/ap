@@ -1,5 +1,8 @@
 permalink: pretty
 
-theme: hacker
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: pages-themes/hacker
 github: [metadata]
 title: CS50 AP
